@@ -28,7 +28,8 @@ export default function Hidden({user}) {
             .from('messages')
             .select('*')
         prevChatData.current = data;
-        if (prevChatData.current !== chatData) {
+        if (chatData !== prevChatData.current) {
+            console.log("foo");
             setChatData(data)
         }
     }
@@ -76,7 +77,7 @@ export default function Hidden({user}) {
         console.log("scroll");
     }, [chatData, messageData])
 
-    setInterval(getTableData, 200)
+    // setInterval(getTableData, 200)
 
     return (
         <Page className="hidden">
