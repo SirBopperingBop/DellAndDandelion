@@ -27,7 +27,10 @@ export default function Hidden({user}) {
         const { data, error } = await supabase
             .from('messages')
             .select('*')
-        setChatData(data)
+        prevChatData.current = data;
+        if (prevChatData.current !== chatData) {
+            setChatData(data)
+        }
     }
     useEffect(() => {
         getTableData()
@@ -73,9 +76,7 @@ export default function Hidden({user}) {
         console.log("scroll");
     }, [chatData, messageData])
 
-    setInterval(() => {
-        
-    }, 100)
+    setInterval(getTableData, 200)
 
     return (
         <Page className="hidden">
