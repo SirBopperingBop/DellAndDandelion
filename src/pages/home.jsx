@@ -12,7 +12,9 @@ import {
   BlockTitle,
   List,
   ListItem,
-  Button
+  Button,
+  Panel,
+  View
 } from 'framework7-react';
 
 const HomePage = () => (
@@ -52,6 +54,15 @@ const HomePage = () => (
       <Button fill panelOpen="left">Left Panel</Button>
       <Button fill panelOpen="right">Right Panel</Button>
     </Block>
+
+    <Panel left cover dark>
+      <View>
+        <Page>
+          <Navbar title="Left Panel" />
+          <Block>Left panel content goes here</Block>
+        </Page>
+      </View>
+      </Panel>
 
     <List strong inset dividersIos>
       <ListItem
