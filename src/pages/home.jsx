@@ -62,6 +62,7 @@ const HomePage = ({f7router}) => {
       <Panel left cover dark>
         <Button fill bgColor='blue'
           onClick={goLog}
+          panelClose
         >Login</Button>
       </Panel>
   
