@@ -1,0 +1,18 @@
+{
+  "cwd": "D:\\projects\\DellAndDandelion",
+  "type": [
+    "web"
+  ],
+  "name": "D&D",
+  "framework": "react",
+  "template": "tabs",
+  "cssPreProcessor": "less",
+  "bundler": "vite",
+  "theming": {
+    "customColor": false,
+    "color": "#007aff",
+    "darkMode": false,
+    "iconFonts": true
+  },
+  "customBuild": false
+}
