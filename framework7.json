@@ -3,7 +3,7 @@
   "type": [
     "web"
   ],
-  "name": "Viratrends",
+  "name": "viratrends",
   "framework": "react",
   "template": "tabs",
   "cssPreProcessor": "less",
