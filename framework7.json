@@ -3,7 +3,7 @@
   "type": [
     "web"
   ],
-  "name": "D&D",
+  "name": "Viratrends",
   "framework": "react",
   "template": "tabs",
   "cssPreProcessor": "less",

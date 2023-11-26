@@ -6,3 +6,5 @@ export const supabase = createClient(
     supabaseUrl,
     supabaseKey
 )
+
+const messages = supabase.channel('messages')

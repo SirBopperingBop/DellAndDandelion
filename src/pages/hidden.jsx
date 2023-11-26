@@ -6,7 +6,6 @@ import Framework7 from "framework7/types";
 
 export default function Hidden({user}) {
     const [logInfo, setLogInfo] = useContext(Context)
-    console.log(logInfo, user);
     const [chatData, setChatData] = useState()
     const [messageData, setMessageData] = useState({
         username: user.username,
@@ -43,12 +42,10 @@ export default function Hidden({user}) {
                     username: user.username,
                     content: ""
                 })
-                getTableData()
             } catch (error) {
                 console.log(error)
             }
         }
-        getTableData()
     }
 
     function createMarkup(htlmString) {
@@ -68,22 +65,20 @@ export default function Hidden({user}) {
     
     useEffect(() => {
         document.getElementById('LastMessage').scrollIntoView();
-
-        console.log("scroll");
     }, [chatData, messageData])
 
-    useEffect(() => {
-        const subscription = supabase
-            .from('chatData')
-            .on('INSERT', (payload) => {
-                // Handle new record insertion
-                getTableData
-            })
-            .subscribe();
 
-        // Cleanup subscription on component unmount
-        return () => subscription.unsubscribe();
-    }, []);
+    useEffect(async () => {
+        const post = await supabase.channel('messages_channel')
+            .on('postgres_changes', { event: '*', schema: 'public', table: 'messages' }, (payload) => {
+                console.log(payload)
+                getTableData()
+            })
+            ?.subscribe(
+                (response) => console.log('Subscription response:', response),
+                (error) => console.error('Subscription error:', error)
+            )
+    }, [])
 
     return (
         <Page className="hidden">

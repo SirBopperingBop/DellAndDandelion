@@ -36,7 +36,7 @@ const MyApp = () => {
 
   // Framework7 Parameters
   const f7params = {
-    name: 'D&D', // App name
+    name: 'Viratrends', // App name
       theme: 'auto', // Automatic theme detection
 
 

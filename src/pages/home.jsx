@@ -28,11 +28,11 @@ const HomePage = ({f7router}) => {
         <NavLeft>
           <Link iconIos="f7:menu" iconMd="material:menu" panelOpen="left" />
         </NavLeft>
-        <NavTitle sliding>D&D</NavTitle>
+        <NavTitle sliding>Viratrends</NavTitle>
         <NavRight>
           <Link iconIos="f7:menu" iconMd="material:menu" panelOpen="right" />
         </NavRight>
-        <NavTitleLarge>D&D</NavTitleLarge>
+        <NavTitleLarge>Viratrends</NavTitleLarge>
       </Navbar>
   
       {/* Page content */}
