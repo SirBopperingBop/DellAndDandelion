@@ -6,7 +6,6 @@ import Framework7 from "framework7/types";
 
 export default function Hidden({user}) {
     const [logInfo, setLogInfo] = useContext(Context)
-    const prevChatData = useRef()
     console.log(logInfo, user);
     const [chatData, setChatData] = useState()
     const [messageData, setMessageData] = useState({
@@ -27,11 +26,7 @@ export default function Hidden({user}) {
         const { data, error } = await supabase
             .from('messages')
             .select('*')
-        prevChatData.current = data;
-        if (chatData !== prevChatData.current) {
-            console.log("foo");
-            setChatData(data)
-        }
+        setChatData(data)
     }
     useEffect(() => {
         getTableData()
@@ -77,7 +72,18 @@ export default function Hidden({user}) {
         console.log("scroll");
     }, [chatData, messageData])
 
-    // setInterval(getTableData, 200)
+    useEffect(() => {
+        const subscription = supabase
+            .from('chatData')
+            .on('INSERT', (payload) => {
+                // Handle new record insertion
+                getTableData
+            })
+            .subscribe();
+
+        // Cleanup subscription on component unmount
+        return () => subscription.unsubscribe();
+    }, []);
 
     return (
         <Page className="hidden">
